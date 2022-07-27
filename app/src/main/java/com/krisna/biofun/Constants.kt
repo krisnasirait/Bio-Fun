@@ -6,14 +6,14 @@ object Constants {
 
 
         val question1 = Question(
-            id = 1,
-            question = "Istilah sel pertama kali dinyatakan oleh …",
-            optionOne = "Johannes Purkinje",
-            optionTwo = "Robert Hooke",
-            optionThree = "Theodor Schawnn",
-            optionFour = "Rudolf Virchow",
-            optionFive = "Felix Dujardin",
-            correctOption = 2
+            1,
+            "Istilah sel pertama kali dinyatakan oleh …",
+            "Johannes Purkinje",
+            "Robert Hooke",
+            "Theodor Schawnn",
+            "Rudolf Virchow",
+            "Felix Dujardin",
+            2
         )
         questionList.add(question1)
 
