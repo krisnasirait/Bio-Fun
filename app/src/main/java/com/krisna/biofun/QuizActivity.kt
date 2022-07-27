@@ -42,7 +42,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
 
         defaultOptionsView()
 
-        if (mCurrentPosition == mQuestionList!!.size){
+        if (mCurrentPosition == mQuestionList!!.size) {
             binding.btnSubmit.text = "Finish"
         } else {
             binding.btnSubmit.text = "Submit"
@@ -96,11 +96,13 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
                 selectedOptionView(binding.tvOptionFive, 5)
             }
             R.id.btn_submit -> {
+                deactivateButton()
                 if (mSelectedOptionPosition == 0) {
                     mCurrentPosition++
 
                     when {
                         mCurrentPosition <= mQuestionList!!.size -> {
+                            activateButton()
                             setQuestion()
                         }
                         else -> {
@@ -108,7 +110,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
                                 this,
                                 "You have successfully completed the Quiz", Toast.LENGTH_SHORT
                             ).show()
-                            val intent = Intent(this,StartActivity::class.java)
+                            val intent = Intent(this, StartActivity::class.java)
                             startActivity(intent)
                         }
                     }
@@ -169,6 +171,22 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
                 )
             }
         }
+    }
+
+    private fun activateButton() {
+        binding.tvOptionOne.isClickable = true
+        binding.tvOptionTwo.isClickable = true
+        binding.tvOptionThree.isClickable = true
+        binding.tvOptionFour.isClickable = true
+        binding.tvOptionFive.isClickable = true
+    }
+
+    private fun deactivateButton() {
+        binding.tvOptionOne.isClickable = false
+        binding.tvOptionTwo.isClickable = false
+        binding.tvOptionThree.isClickable = false
+        binding.tvOptionFour.isClickable = false
+        binding.tvOptionFive.isClickable = false
     }
 
 
