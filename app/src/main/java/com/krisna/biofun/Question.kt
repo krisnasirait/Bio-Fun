@@ -7,5 +7,6 @@ data class Question (
     val optionTwo: String,
     val optionThree: String,
     val optionFour: String,
+    val optionFive: String,
     val correctOption: Int
 )

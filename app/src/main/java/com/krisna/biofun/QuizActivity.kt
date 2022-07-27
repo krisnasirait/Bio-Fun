@@ -31,6 +31,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
         binding.tvOptionTwo.setOnClickListener(this)
         binding.tvOptionThree.setOnClickListener(this)
         binding.tvOptionFour.setOnClickListener(this)
+        binding.tvOptionFive.setOnClickListener(this)
         binding.btnSubmit.setOnClickListener(this)
 
 
@@ -55,6 +56,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
         binding.tvOptionTwo.text = question.optionTwo
         binding.tvOptionThree.text = question.optionThree
         binding.tvOptionFour.text = question.optionFour
+        binding.tvOptionFive.text = question.optionFive
     }
 
     private fun defaultOptionsView() {
@@ -63,6 +65,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
         options.add(1, binding.tvOptionTwo)
         options.add(2, binding.tvOptionThree)
         options.add(3, binding.tvOptionFour)
+        options.add(4, binding.tvOptionFive)
 
         for (option in options) {
             option.setTextColor(Color.parseColor("#7A8089"))
@@ -88,6 +91,9 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.tv_option_four -> {
                 selectedOptionView(binding.tvOptionFour, 4)
+            }
+            R.id.tv_option_five -> {
+                selectedOptionView(binding.tvOptionFive, 5)
             }
             R.id.btn_submit -> {
                 if (mSelectedOptionPosition == 0) {
@@ -154,6 +160,11 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
             }
             4 -> {
                 binding.tvOptionFour.background = ContextCompat.getDrawable(
+                    this, drawableView
+                )
+            }
+            5 -> {
+                binding.tvOptionFive.background = ContextCompat.getDrawable(
                     this, drawableView
                 )
             }
