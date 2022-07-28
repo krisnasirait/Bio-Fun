@@ -29,5 +29,14 @@ class ResultActivity : AppCompatActivity() {
         binding.progressWrong.progress = wrongValue
         binding.textValuewrong.text = "$wrongValue" + "/" + binding.progressWrong.max
 
+        scoreCount(correctValue)
+
+    }
+
+    private fun scoreCount(correctValue: Int){
+        val score: Double = correctValue.toDouble() / 30 * 100
+        val score2digits: Double = String.format("%.2f",score).toDouble()
+
+        binding.textScore.text = score2digits.toString()
     }
 }
