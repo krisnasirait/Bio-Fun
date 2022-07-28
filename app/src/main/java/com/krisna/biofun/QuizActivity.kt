@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -16,6 +17,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
     private var mCurrentPosition: Int = 1
     private var mQuestionList: ArrayList<Question>? = null
     private var mSelectedOptionPosition: Int = 0
+    private var mAmountRight: Int = 0
     private lateinit var binding: ActivityQuizBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -106,11 +108,13 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
                             setQuestion()
                         }
                         else -> {
+                            Log.d("Amount Right", mAmountRight.toString())
                             Toast.makeText(
                                 this,
                                 "You have successfully completed the Quiz", Toast.LENGTH_SHORT
                             ).show()
-                            val intent = Intent(this, StartActivity::class.java)
+                            val intent = Intent(this, ResultActivity::class.java)
+                            intent.putExtra("amountRight", mAmountRight)
                             startActivity(intent)
                         }
                     }
@@ -119,6 +123,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
                     if (question!!.correctOption != mSelectedOptionPosition) {
                         answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
                     }
+                    mAmountRight++
                     answerView(question.correctOption, R.drawable.correct_option_border_bg)
                     if (mCurrentPosition == mQuestionList!!.size) {
                         binding.btnSubmit.text = "Finish"
