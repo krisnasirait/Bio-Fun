@@ -16,13 +16,18 @@ class ResultActivity : AppCompatActivity() {
         setContentView(view)
 
 
-        val myvalue = getIntent().getIntExtra("amountRight", 0)
-        if (myvalue != null) {
-            Log.d("myvalue", myvalue.toString())
+        val correctValue = getIntent().getIntExtra("amountRight", 0)
+        val wrongValue = getIntent().getIntExtra("amountWrong",0)
+        if (correctValue != null && wrongValue != null) {
+            Log.d("correctValue", correctValue.toString())
+            Log.d("wrongValue", wrongValue.toString())
         }
 
-        binding.progressResult.progress = myvalue
-        binding.textValueresult.text = "$myvalue" + "/" + binding.progressResult.max
+        binding.progressCorrect.progress = correctValue
+        binding.textValuecorrect.text = "$correctValue" + "/" + binding.progressCorrect.max
+
+        binding.progressWrong.progress = wrongValue
+        binding.textValuewrong.text = "$wrongValue" + "/" + binding.progressWrong.max
 
     }
 }
