@@ -11,4 +11,9 @@
     <color name="forest_green">#228B22</color>
     <color name="colorAccent">#FF006E</color>
     <color name="baby_blue">#0096FF</color>
+    <color name="calm_green">#189F8B</color>
+    <color name="amber">#FFBF00</color>
+    <color name="neon_orange">#FF5F1F</color>
+    <color name="crimson">#DC143C</color>
+    <color name="navy_blue">#0000da</color>
 </resources>

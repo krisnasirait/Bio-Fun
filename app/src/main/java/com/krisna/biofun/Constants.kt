@@ -4,7 +4,6 @@ object Constants {
     fun getQuestions(): ArrayList<Question> {
         val questionList = ArrayList<Question>()
 
-
         val question1 = Question(
             1,
             "Istilah sel pertama kali dinyatakan oleh …",
@@ -139,16 +138,112 @@ object Constants {
         questionList.add(question10)
 
         val question11 = Question(
-            3,
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            3
+            11,
+            "Krenasi terjadi bila sel berada di lingkungan atau larutan …",
+            "Hipotonis",
+            "Hipertonis",
+            "Isotonis",
+            "Bersifat asam",
+            "Bersifat basa",
+            2
         )
         questionList.add(question11)
+
+        val question12 = Question(
+            12,
+            "Krenasi terjadi bila sel berada di lingkungan atau larutan …",
+            "Hipotonis",
+            "Hipertonis",
+            "Isotonis",
+            "Bersifat asam",
+            "Bersifat basa",
+            2
+        )
+        questionList.add(question12)
+
+        val question13 = Question(
+            13,
+            "Krenasi terjadi bila sel berada di lingkungan atau larutan …",
+            "Hipotonis",
+            "Hipertonis",
+            "Isotonis",
+            "Bersifat asam",
+            "Bersifat basa",
+            2
+        )
+        questionList.add(question13)
+
+        val question14 = Question(
+            14,
+            "Krenasi terjadi bila sel berada di lingkungan atau larutan …",
+            "Hipotonis",
+            "Hipertonis",
+            "Isotonis",
+            "Bersifat asam",
+            "Bersifat basa",
+            2
+        )
+        questionList.add(question14)
+
+        val question16 = Question(
+            16,
+            "Krenasi terjadi bila sel berada di lingkungan atau larutan …",
+            "Hipotonis",
+            "Hipertonis",
+            "Isotonis",
+            "Bersifat asam",
+            "Bersifat basa",
+            2
+        )
+        questionList.add(question16)
+
+        val question17 = Question(
+            17,
+            "Krenasi terjadi bila sel berada di lingkungan atau larutan …",
+            "Hipotonis",
+            "Hipertonis",
+            "Isotonis",
+            "Bersifat asam",
+            "Bersifat basa",
+            2
+        )
+        questionList.add(question17)
+
+        val question18 = Question(
+            18,
+            "Krenasi terjadi bila sel berada di lingkungan atau larutan …",
+            "Hipotonis",
+            "Hipertonis",
+            "Isotonis",
+            "Bersifat asam",
+            "Bersifat basa",
+            2
+        )
+        questionList.add(question18)
+
+        val question19 = Question(
+            19,
+            "Krenasi terjadi bila sel berada di lingkungan atau larutan …",
+            "Hipotonis",
+            "Hipertonis",
+            "Isotonis",
+            "Bersifat asam",
+            "Bersifat basa",
+            2
+        )
+        questionList.add(question19)
+
+        val question20 = Question(
+            20,
+            "Krenasi terjadi bila sel berada di lingkungan atau larutan …",
+            "Hipotonis",
+            "Hipertonis",
+            "Isotonis",
+            "Bersifat asam",
+            "Bersifat basa",
+            2
+        )
+        questionList.add(question20)
 
         return questionList
     }
