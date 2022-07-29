@@ -26,6 +26,9 @@ class ResultActivity : AppCompatActivity() {
         binding.progressCorrect.progress = correctValue
         binding.textValuecorrect.text = "$correctValue" + "/" + binding.progressCorrect.max
 
+        binding.progressWrong.progress = wrongValue
+        binding.textValuewrong.text = "$wrongValue" + "/" + binding.progressWrong.max
+
         scoreCount(correctValue)
 
     }
