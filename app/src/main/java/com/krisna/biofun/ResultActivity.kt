@@ -17,7 +17,7 @@ class ResultActivity : AppCompatActivity() {
 
 
         val correctValue = getIntent().getIntExtra("amountRight", 0)
-        val wrongValue = getIntent().getIntExtra("amountWrong",0)
+        val wrongValue = 30 - correctValue
         if (correctValue != null && wrongValue != null) {
             Log.d("correctValue", correctValue.toString())
             Log.d("wrongValue", wrongValue.toString())

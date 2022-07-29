@@ -18,7 +18,6 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
     private var mQuestionList: ArrayList<Question>? = null
     private var mSelectedOptionPosition: Int = 0
     private var mAmountCorrect: Int = 0
-    private var mAmountWrong: Int = 0
     private lateinit var binding: ActivityQuizBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -110,24 +109,23 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
                         }
                         else -> {
                             Log.d("Amount Right", mAmountCorrect.toString())
-                            Log.d("Amount Wrong", mAmountWrong.toString())
                             Toast.makeText(
                                 this,
                                 "You have successfully completed the Quiz", Toast.LENGTH_SHORT
                             ).show()
                             val intent = Intent(this, ResultActivity::class.java)
                             intent.putExtra("amountRight", mAmountCorrect)
-                            intent.putExtra("amountWrong", mAmountWrong)
                             startActivity(intent)
                         }
                     }
                 } else {
                     val question = mQuestionList?.get(mCurrentPosition - 1)
                     if (question!!.correctOption != mSelectedOptionPosition) {
-                        mAmountWrong++
                         answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
+                    }else if(mSelectedOptionPosition == question!!.correctOption){
+                        Log.d("Amount correct +1", "1")
+                        mAmountCorrect++
                     }
-                    mAmountCorrect++
                     answerView(question.correctOption, R.drawable.correct_option_border_bg)
                     if (mCurrentPosition == mQuestionList!!.size) {
                         binding.btnSubmit.text = "Finish"
