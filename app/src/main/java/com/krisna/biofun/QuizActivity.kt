@@ -40,7 +40,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setQuestion() {
-        val question = mQuestionList!!.get(mCurrentPosition - 1)
+        val question = mQuestionList!![mCurrentPosition - 1]
 
         defaultOptionsView()
 
@@ -122,7 +122,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
                     val question = mQuestionList?.get(mCurrentPosition - 1)
                     if (question!!.correctOption != mSelectedOptionPosition) {
                         answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
-                    }else if(mSelectedOptionPosition == question!!.correctOption){
+                    }else if(mSelectedOptionPosition == question.correctOption){
                         Log.d("Amount correct +1", "1")
                         mAmountCorrect++
                     }
