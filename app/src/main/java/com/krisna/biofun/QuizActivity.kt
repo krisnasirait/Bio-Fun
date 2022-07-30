@@ -12,6 +12,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.krisna.biofun.databinding.ActivityQuizBinding
+import android.animation.AnimatorListenerAdapter
+
+import android.animation.ValueAnimator
+import android.animation.ValueAnimator.AnimatorUpdateListener
+
 
 class QuizActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -39,10 +44,6 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
 
 
     }
-
-//    override fun onStop() {
-//        super.onStop()
-//    }
 
     private fun setQuestion() {
         val question = mQuestionList!![mCurrentPosition - 1]
@@ -106,7 +107,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
                 deactivateButton()
                 if (mSelectedOptionPosition == 0) {
                     mCurrentPosition++
-                    clearCheckAnimation()
+//                    clearCheckAnimation()
 
                     when {
                         mCurrentPosition <= mQuestionList!!.size -> {
@@ -127,12 +128,14 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
                 } else {
                     val question = mQuestionList?.get(mCurrentPosition - 1)
                     if (question!!.correctOption != mSelectedOptionPosition) {
-                        showCheckAnimation()
-                        playCheckAnswerAnimation("91846-invalid.json")
-
+                        startCheckAnimationLogo("91846-invalid.json")
+//                        showCheckAnimation()
+//                        playCheckAnswerAnimation("91846-invalid.json")
+                        answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
                     }else if(mSelectedOptionPosition == question.correctOption){
-                        showCheckAnimation()
-                        playCheckAnswerAnimation("5785-checkmark.json")
+                        startCheckAnimationLogo("5785-checkmark.json")
+//                        showCheckAnimation()
+//                        playCheckAnswerAnimation("5785-checkmark.json")
                         Log.d("Amount correct +1", "1")
                     }
                     answerView(question.correctOption, R.drawable.correct_option_border_bg)
@@ -162,10 +165,8 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
     private fun playCheckAnswerAnimation(resAnimation: String){
         binding.lottieCheckres.visibility = View.VISIBLE
         binding.lottieCheckres.setAnimation(resAnimation)
-        binding.lottieCheckres.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
         binding.lottieCheckres.loop(false)
         binding.lottieCheckres.playAnimation()
-        answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
     }
 
     private fun showCheckAnimation(){
@@ -204,6 +205,20 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
                 )
             }
         }
+    }
+
+    private fun startCheckAnimationLogo(resAnimation: String) {
+        val animator = ValueAnimator.ofFloat(0f, 1f).setDuration(500)
+        animator.addUpdateListener { animation -> binding.lottieCheckres.setProgress(animation.animatedValue as Float) }
+        animator.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator) {
+                binding.lottieCheckres.visibility = View.GONE
+                super.onAnimationEnd(animation)
+            }
+        })
+        binding.lottieCheckres.visibility = View.VISIBLE
+        binding.lottieCheckres.setAnimation(resAnimation)
+        animator.start()
     }
 
 
