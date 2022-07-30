@@ -1,5 +1,6 @@
 package com.krisna.biofun
 
+import android.animation.Animator
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
@@ -105,6 +106,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
                 deactivateButton()
                 if (mSelectedOptionPosition == 0) {
                     mCurrentPosition++
+                    clearCheckAnimation()
 
                     when {
                         mCurrentPosition <= mQuestionList!!.size -> {
@@ -125,10 +127,13 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
                 } else {
                     val question = mQuestionList?.get(mCurrentPosition - 1)
                     if (question!!.correctOption != mSelectedOptionPosition) {
-                        answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
+                        showCheckAnimation()
+                        playCheckAnswerAnimation("91846-invalid.json")
+
                     }else if(mSelectedOptionPosition == question.correctOption){
+                        showCheckAnimation()
+                        playCheckAnswerAnimation("5785-checkmark.json")
                         Log.d("Amount correct +1", "1")
-                        mAmountCorrect++
                     }
                     answerView(question.correctOption, R.drawable.correct_option_border_bg)
                     if (mCurrentPosition == mQuestionList!!.size) {
@@ -152,6 +157,23 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
             this,
             R.drawable.selected_option_border_bg
         )
+    }
+
+    private fun playCheckAnswerAnimation(resAnimation: String){
+        binding.lottieCheckres.visibility = View.VISIBLE
+        binding.lottieCheckres.setAnimation(resAnimation)
+        binding.lottieCheckres.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
+        binding.lottieCheckres.loop(false)
+        binding.lottieCheckres.playAnimation()
+        answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
+    }
+
+    private fun showCheckAnimation(){
+        binding.lottieCheckres.visibility = View.VISIBLE
+    }
+
+    private fun clearCheckAnimation(){
+        binding.lottieCheckres.visibility = View.GONE
     }
 
     private fun answerView(answer: Int, drawableView: Int) {
@@ -184,6 +206,8 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+
+
     private fun activateButton() {
         binding.tvOptionOne.isClickable = true
         binding.tvOptionTwo.isClickable = true
@@ -199,6 +223,8 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
         binding.tvOptionFour.isClickable = false
         binding.tvOptionFive.isClickable = false
     }
+
+
 
 
 }
