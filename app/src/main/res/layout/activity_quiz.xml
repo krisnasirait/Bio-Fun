@@ -7,149 +7,165 @@
     tools:context=".QuizActivity"
     android:background="@color/calm_green">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="16dp"
-        >
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_checkres"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+        <LinearLayout
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="10dp">
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="16dp"
+            >
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp">
+                <TextView
+                    android:id="@+id/tv_question"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center"
+                    android:text="Which internet company began life as an online bookstore called &#039;Cadabra&#039;?"
+                    android:textColor="#363A43"
+                    android:textSize="22sp">
+                </TextView>
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:id="@+id/ll_progress_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:indeterminate="false"
+                    android:max="30"
+                    android:minHeight="50dp"
+                    android:progressBackgroundTint="@color/white"
+                    android:progressTint="@color/amber"
+                    android:progress="0">
+                </ProgressBar>
+
+                <TextView
+                    android:id="@+id/tv_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="#7A8089"
+                    android:textSize="14sp"
+                    tools:text="0/10">
+                </TextView>
+
+            </LinearLayout>
+
             <TextView
-                android:id="@+id/tv_question"
+                android:id="@+id/tv_option_one"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:background="@drawable/default_option_border_bg"
                 android:fontFamily="@font/roboto"
                 android:gravity="center"
-                android:text="Which internet company began life as an online bookstore called &#039;Cadabra&#039;?"
-                android:textColor="#363A43"
-                android:textSize="22sp">
+                android:padding="15dp"
+                android:textColor="#7A8089"
+                android:textSize="18sp"
+                tools:text="Apple">
             </TextView>
-        </androidx.cardview.widget.CardView>
-
-        <LinearLayout
-            android:id="@+id/ll_progress_details"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:indeterminate="false"
-                android:max="30"
-                android:minHeight="50dp"
-                android:progressBackgroundTint="@color/white"
-                android:progressTint="@color/amber"
-                android:progress="0">
-            </ProgressBar>
 
             <TextView
-                android:id="@+id/tv_progress"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_option_two"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/default_option_border_bg"
+                android:fontFamily="@font/roboto"
                 android:gravity="center"
                 android:padding="15dp"
-                android:textColor="@color/white"
-                android:textColorHint="#7A8089"
-                android:textSize="14sp"
-                tools:text="0/10">
+                android:textColor="#7A8089"
+                android:textSize="18sp"
+                tools:text="Apple">
             </TextView>
 
+            <TextView
+                android:id="@+id/tv_option_three"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/default_option_border_bg"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textColor="#7A8089"
+                android:textSize="18sp"
+                tools:text="Apple">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_option_four"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/default_option_border_bg"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textColor="#7A8089"
+                android:textSize="18sp"
+                tools:text="Apple">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_option_five"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/default_option_border_bg"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textColor="#7A8089"
+                android:textSize="18sp"
+                tools:text="Apple">
+            </TextView>
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@color/ceil"
+                android:text="@string/submit"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold">
+            </Button>
+
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/tv_option_one"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/default_option_border_bg"
-            android:fontFamily="@font/roboto"
-            android:gravity="center"
-            android:padding="15dp"
-            android:textColor="#7A8089"
-            android:textSize="18sp"
-            tools:text="Apple">
-        </TextView>
-
-        <TextView
-            android:id="@+id/tv_option_two"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/default_option_border_bg"
-            android:fontFamily="@font/roboto"
-            android:gravity="center"
-            android:padding="15dp"
-            android:textColor="#7A8089"
-            android:textSize="18sp"
-            tools:text="Apple">
-        </TextView>
-
-        <TextView
-            android:id="@+id/tv_option_three"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/default_option_border_bg"
-            android:fontFamily="@font/roboto"
-            android:gravity="center"
-            android:padding="15dp"
-            android:textColor="#7A8089"
-            android:textSize="18sp"
-            tools:text="Apple">
-        </TextView>
-
-        <TextView
-            android:id="@+id/tv_option_four"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/default_option_border_bg"
-            android:fontFamily="@font/roboto"
-            android:gravity="center"
-            android:padding="15dp"
-            android:textColor="#7A8089"
-            android:textSize="18sp"
-            tools:text="Apple">
-        </TextView>
-
-        <TextView
-            android:id="@+id/tv_option_five"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/default_option_border_bg"
-            android:fontFamily="@font/roboto"
-            android:gravity="center"
-            android:padding="15dp"
-            android:textColor="#7A8089"
-            android:textSize="18sp"
-            tools:text="Apple">
-        </TextView>
-
-        <Button
-            android:id="@+id/btn_submit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@color/ceil"
-            android:text="@string/submit"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold">
-        </Button>
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

@@ -24,137 +24,142 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
+        <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/image_trophy"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:layout_marginTop="40dp"
-            android:src="@drawable/trophy"
+            app:lottie_fileName="107653-trophy.json"
+            app:lottie_speed="1"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_result" />
 
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="20dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_trophy">
 
-
-            <androidx.cardview.widget.CardView
-                app:layout_constraintTop_toBottomOf="@id/image_trophy"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:layout_marginTop="25dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                app:cardCornerRadius="10dp">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
-                        <LinearLayout
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:orientation="vertical">
+                            android:text="CORRECT"
+                            android:textColor="@color/neon_orange"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="CORRECT"
-                                android:textColor="@color/neon_orange"
-                                android:textSize="20sp"
-                                android:textStyle="bold" />
+                        <com.google.android.material.progressindicator.CircularProgressIndicator
+                            android:id="@+id/progress_correct"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:max="30"
+                            app:indicatorColor="@color/amber"
+                            app:indicatorSize="100dp"
+                            app:trackColor="@color/baby_blue"
+                            app:trackThickness="15dp"
+                            app:showAnimationBehavior="outward"/>
 
-                            <com.google.android.material.progressindicator.CircularProgressIndicator
-                                android:id="@+id/progress_correct"
-                                android:layout_width="100dp"
-                                android:layout_height="100dp"
-                                android:layout_gravity="center"
-                                android:max="30"
-                                app:indicatorColor="@color/amber"
-                                app:indicatorSize="100dp"
-                                app:trackColor="@color/baby_blue"
-                                app:trackThickness="15dp" />
-
-                            <TextView
-                                android:id="@+id/text_valuecorrect"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="20/30" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
+                        <TextView
+                            android:id="@+id/text_valuecorrect"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginStart="40dp"
-                            android:orientation="vertical">
+                            android:text="20/30" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="WRONG"
-                                android:textColor="@color/neon_orange"
-                                android:textSize="20sp"
-                                android:textStyle="bold" />
-
-                            <com.google.android.material.progressindicator.CircularProgressIndicator
-                                android:id="@+id/progress_wrong"
-                                android:layout_width="100dp"
-                                android:layout_height="100dp"
-                                android:layout_gravity="center"
-                                android:max="30"
-                                app:indicatorColor="@color/crimson"
-                                app:indicatorSize="100dp"
-                                app:trackColor="@color/baby_blue"
-                                app:trackThickness="15dp" />
-
-                            <TextView
-                                android:id="@+id/text_valuewrong"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="20/30" />
-
-                        </LinearLayout>
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/title_yourScore"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="YOUR SCORE"
                         android:layout_gravity="center"
-                        android:layout_marginTop="15dp"
-                        android:textSize="25sp"
-                        android:textColor="@color/neon_orange"
-                        android:textStyle="bold"/>
+                        android:layout_marginStart="40dp"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/text_score"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="100"
-                        android:textSize="35sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="10dp"
-                        android:textColor="@color/baby_blue"
-                        android:layout_gravity="center"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="WRONG"
+                            android:textColor="@color/neon_orange"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.progressindicator.CircularProgressIndicator
+                            android:id="@+id/progress_wrong"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:max="30"
+                            app:indicatorColor="@color/crimson"
+                            app:indicatorSize="100dp"
+                            app:trackColor="@color/baby_blue"
+                            app:trackThickness="15dp"
+                            app:showAnimationBehavior="outward"/>
+
+                        <TextView
+                            android:id="@+id/text_valuewrong"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="20/30" />
+
+                    </LinearLayout>
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/title_yourScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:text="YOUR SCORE"
+                    android:textColor="@color/neon_orange"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:text="100"
+                    android:textColor="@color/baby_blue"
+                    android:textSize="35sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
