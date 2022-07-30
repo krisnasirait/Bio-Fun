@@ -39,6 +39,10 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
+//    override fun onStop() {
+//        super.onStop()
+//    }
+
     private fun setQuestion() {
         val question = mQuestionList!![mCurrentPosition - 1]
 
