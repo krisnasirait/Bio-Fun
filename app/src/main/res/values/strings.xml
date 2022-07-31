@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">Bio Fun</string>
     <string name="submit">Submit</string>
+    <string name="title_biofun">BioFun</string>
+    <string name="titleLong_biofun">Biology is Fun</string>
+    <string name="title_btnStartQuiz">Start Quiz</string>
+    <string name="question">Which internet company began life as an online bookstore called \'Cadabra\'?</string>
+    <string name="title_result">Result</string>
+    <string name="title_correct">CORRECT</string>
+    <string name="amount_correct">20/30</string>
+    <string name="title_wrong">WRONG</string>
+    <string name="amount_wrong">20/30</string>
+    <string name="title_yourscore">YOUR SCORE</string>
+    <string name="score">100</string>
 </resources>
