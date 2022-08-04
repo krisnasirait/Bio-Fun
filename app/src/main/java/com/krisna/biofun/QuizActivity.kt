@@ -1,17 +1,20 @@
 package com.krisna.biofun
 
 import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ValueAnimator
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.krisna.biofun.databinding.ActivityQuizBinding
+
 
 class QuizActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -40,20 +43,13 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-//    override fun onStop() {
-//        super.onStop()
-//    }
-
     private fun setQuestion() {
         val question = mQuestionList!![mCurrentPosition - 1]
 
         defaultOptionsView()
 
-        if (mCurrentPosition == mQuestionList!!.size) {
-            binding.btnSubmit.text = "Finish"
-        } else {
-            binding.btnSubmit.text = "Submit"
-        }
+        if (mCurrentPosition == mQuestionList!!.size) binding.btnSubmit.text =
+            "Finish" else binding.btnSubmit.text = "Submit"
 
         binding.progressBar.progress = mCurrentPosition
         binding.tvProgress.text = "$mCurrentPosition" + "/" + binding.progressBar.max
@@ -87,26 +83,15 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.tv_option_one -> {
-                selectedOptionView(binding.tvOptionOne, 1)
-            }
-            R.id.tv_option_two -> {
-                selectedOptionView(binding.tvOptionTwo, 2)
-            }
-            R.id.tv_option_three -> {
-                selectedOptionView(binding.tvOptionThree, 3)
-            }
-            R.id.tv_option_four -> {
-                selectedOptionView(binding.tvOptionFour, 4)
-            }
-            R.id.tv_option_five -> {
-                selectedOptionView(binding.tvOptionFive, 5)
-            }
+            R.id.tv_option_one -> selectedOptionView(binding.tvOptionOne, 1)
+            R.id.tv_option_two -> selectedOptionView(binding.tvOptionTwo, 2)
+            R.id.tv_option_three -> selectedOptionView(binding.tvOptionThree, 3)
+            R.id.tv_option_four -> selectedOptionView(binding.tvOptionFour, 4)
+            R.id.tv_option_five -> selectedOptionView(binding.tvOptionFive, 5)
             R.id.btn_submit -> {
                 deactivateButton()
                 if (mSelectedOptionPosition == 0) {
                     mCurrentPosition++
-                    clearCheckAnimation()
 
                     when {
                         mCurrentPosition <= mQuestionList!!.size -> {
@@ -127,20 +112,16 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
                 } else {
                     val question = mQuestionList?.get(mCurrentPosition - 1)
                     if (question!!.correctOption != mSelectedOptionPosition) {
-                        showCheckAnimation()
-                        playCheckAnswerAnimation("91846-invalid.json")
-
-                    }else if(mSelectedOptionPosition == question.correctOption){
-                        showCheckAnimation()
-                        playCheckAnswerAnimation("5785-checkmark.json")
+                        startCheckAnimationLogo("91846-invalid.json")
+                        answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
+                    } else if (mSelectedOptionPosition == question.correctOption) {
+                        startCheckAnimationLogo("5785-checkmark.json")
                         Log.d("Amount correct +1", "1")
+                        mAmountCorrect++
                     }
                     answerView(question.correctOption, R.drawable.correct_option_border_bg)
-                    if (mCurrentPosition == mQuestionList!!.size) {
-                        binding.btnSubmit.text = "Finish"
-                    } else {
-                        binding.btnSubmit.text = "Go to next question"
-                    }
+                    if (mCurrentPosition == mQuestionList!!.size) binding.btnSubmit.text =
+                        "Finish" else binding.btnSubmit.text = "Go to next question"
                     mSelectedOptionPosition = 0
                 }
 
@@ -159,53 +140,41 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
         )
     }
 
-    private fun playCheckAnswerAnimation(resAnimation: String){
-        binding.lottieCheckres.visibility = View.VISIBLE
-        binding.lottieCheckres.setAnimation(resAnimation)
-        binding.lottieCheckres.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
-        binding.lottieCheckres.loop(false)
-        binding.lottieCheckres.playAnimation()
-        answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
-    }
-
-    private fun showCheckAnimation(){
-        binding.lottieCheckres.visibility = View.VISIBLE
-    }
-
-    private fun clearCheckAnimation(){
-        binding.lottieCheckres.visibility = View.GONE
-    }
-
     private fun answerView(answer: Int, drawableView: Int) {
         when (answer) {
-            1 -> {
-                binding.tvOptionOne.background = ContextCompat.getDrawable(
-                    this, drawableView
-                )
-            }
-            2 -> {
-                binding.tvOptionTwo.background = ContextCompat.getDrawable(
-                    this, drawableView
-                )
-            }
-            3 -> {
-                binding.tvOptionThree.background = ContextCompat.getDrawable(
-                    this, drawableView
-                )
-            }
-            4 -> {
-                binding.tvOptionFour.background = ContextCompat.getDrawable(
-                    this, drawableView
-                )
-            }
-            5 -> {
-                binding.tvOptionFive.background = ContextCompat.getDrawable(
-                    this, drawableView
-                )
-            }
+            1 -> binding.tvOptionOne.background = ContextCompat.getDrawable(
+                this, drawableView
+            )
+            2 -> binding.tvOptionTwo.background = ContextCompat.getDrawable(
+                this, drawableView
+            )
+            3 -> binding.tvOptionThree.background = ContextCompat.getDrawable(
+                this, drawableView
+            )
+            4 -> binding.tvOptionFour.background = ContextCompat.getDrawable(
+                this, drawableView
+            )
+            5 -> binding.tvOptionFive.background = ContextCompat.getDrawable(
+                this, drawableView
+            )
         }
     }
 
+    private fun startCheckAnimationLogo(resAnimation: String) {
+        val animator = ValueAnimator.ofFloat(0f, 1f).setDuration(500)
+        animator.addUpdateListener { animation ->
+            binding.lottieCheckres.progress = animation.animatedValue as Float
+        }
+        animator.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator) {
+                binding.lottieCheckres.visibility = View.GONE
+                super.onAnimationEnd(animation)
+            }
+        })
+        binding.lottieCheckres.visibility = View.VISIBLE
+        binding.lottieCheckres.setAnimation(resAnimation)
+        animator.start()
+    }
 
 
     private fun activateButton() {
@@ -223,8 +192,6 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
         binding.tvOptionFour.isClickable = false
         binding.tvOptionFive.isClickable = false
     }
-
-
 
 
 }

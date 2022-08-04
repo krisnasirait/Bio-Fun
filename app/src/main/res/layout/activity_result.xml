@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/text_result"
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:fontFamily="@font/mermaid"
-            android:text="Result"
+            android:text="@string/title_result"
             android:textColor="@color/white"
             android:textSize="40sp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -72,7 +72,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="CORRECT"
+                            android:text="@string/title_correct"
                             android:textColor="@color/neon_orange"
                             android:textSize="20sp"
                             android:textStyle="bold" />
@@ -94,7 +94,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="20/30" />
+                            android:text="@string/amount_correct" />
 
                     </LinearLayout>
 
@@ -109,7 +109,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="WRONG"
+                            android:text="@string/title_wrong"
                             android:textColor="@color/neon_orange"
                             android:textSize="20sp"
                             android:textStyle="bold" />
@@ -131,7 +131,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="20/30" />
+                            android:text="@string/amount_wrong" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -142,7 +142,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="15dp"
-                    android:text="YOUR SCORE"
+                    android:text="@string/title_yourscore"
                     android:textColor="@color/neon_orange"
                     android:textSize="25sp"
                     android:textStyle="bold" />
@@ -153,7 +153,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="10dp"
-                    android:text="100"
+                    android:text="@string/score"
                     android:textColor="@color/baby_blue"
                     android:textSize="35sp"
                     android:textStyle="bold" />
