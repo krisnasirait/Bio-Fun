@@ -117,6 +117,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
                     } else if (mSelectedOptionPosition == question.correctOption) {
                         startCheckAnimationLogo("5785-checkmark.json")
                         Log.d("Amount correct +1", "1")
+                        mAmountCorrect++
                     }
                     answerView(question.correctOption, R.drawable.correct_option_border_bg)
                     if (mCurrentPosition == mQuestionList!!.size) binding.btnSubmit.text =
